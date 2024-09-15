@@ -13,12 +13,10 @@ import (
 func main() {
 	app := fiber.New()
 
-	// Serve static files for frontend
 	app.Static("/", "./public")
 
-	// WebSocket route
 	app.Get("/ws", websocket.New(func(c *websocket.Conn) {
-		// Start a bash process
+		log.Println("New WebSocket connection")
 		cmd := exec.Command("bash")
 		pty, err := pty.Start(cmd)
 		if err != nil {
@@ -30,7 +28,6 @@ func main() {
 			_ = cmd.Wait()
 		}()
 
-		// Read data from the pty and send to frontend via WebSocket
 		go func() {
 			buf := make([]byte, 1024)
 			for {
@@ -46,7 +43,6 @@ func main() {
 			}
 		}()
 
-		// Read data from WebSocket and write to the pty (terminal)
 		for {
 			_, msg, err := c.ReadMessage()
 			if err != nil {
