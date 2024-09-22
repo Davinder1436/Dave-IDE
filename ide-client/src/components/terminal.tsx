@@ -17,7 +17,7 @@ const TerminalComponent: React.FC = () => {
     }
 
    
-    const socket = new WebSocket(`ws://localhost:3000/ws`);
+    const socket = new WebSocket(`ws://localhost:3000/terminal`);
 
     
     socket.onmessage = (event: MessageEvent) => {
@@ -40,8 +40,8 @@ const TerminalComponent: React.FC = () => {
     <div
       ref={terminalRef}
       style={{
-        width: '100%',
-        height: '100vh',
+        width: '100vw',
+        height: '30vh',
         backgroundColor: 'black'
       }}
     ></div>

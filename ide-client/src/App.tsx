@@ -1,5 +1,6 @@
 import React from 'react';
-import TerminalComponent from './components/terminal'
+
+import TerminalComponent from './components/terminal';
 
 const App: React.FC = () => {
   return (
