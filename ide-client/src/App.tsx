@@ -1,12 +1,17 @@
 import React from 'react';
 
 import TerminalComponent from './components/terminal';
+import FileTree from './components/fileTree';
+import { FileTreeProvider } from './Context/FileTreeContext';
 
 const App: React.FC = () => {
   return (
+    <FileTreeProvider>
     <div className="App">
-      <TerminalComponent />
+      
+      <FileTree/>
     </div>
+    </FileTreeProvider>
   );
 };
 
