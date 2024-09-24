@@ -8,7 +8,6 @@ import (
 	"github.com/gofiber/websocket/v2"
 )
 
-// TerminalHandler manages the pseudo-terminal (pty) and WebSocket communication
 func TerminalHandler(c *websocket.Conn) {
 	cmd := exec.Command("bash")
 	pty, err := pty.Start(cmd)
